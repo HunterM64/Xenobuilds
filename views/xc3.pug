@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to Xenobuilds 
+
+    form(action='/xc3', method='POST')
+        p 
+            | Party Name: 
+            input(type='text', name='party_name', placeholder="Enter party name...")
+        input(value='Submit', type='Submit')

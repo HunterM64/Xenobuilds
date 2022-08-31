@@ -1,0 +1,14 @@
+[
+    {
+        "id":1,
+        "party_name":"Party 1"
+    },
+    {
+        "id":2,
+        "party_name":"Party 2"
+    },
+    {
+        "id":3,
+        "party_name":"Party 3"
+    }
+]
