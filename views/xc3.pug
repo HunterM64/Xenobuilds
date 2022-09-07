@@ -1,11 +1,89 @@
 extends layout
 
 block content
-    h1= title
-    p Welcome to Xenobuilds 
+    h1 Xenoblade Chronicles 3 Party Builder 
 
     form(action='/xc3', method='POST')
         p 
             | Party Name: 
-            input(type='text', name='party_name', placeholder="Enter party name...")
+            input(type='text', name='partyName', placeholder="Enter party name...")
+
+        hr
+
+        div(class="charForm")
+            p 
+                | Character: 
+                input(type='text', name='char')
+            p 
+                | Class: 
+                input(type='text', name='charClass')
+            p 
+                | Class Arts: 
+            p(class="indented")
+                input(type='text', name='charClassArtOne')
+            p(class="indented") 
+                input(type='text', name='charClassArtTwo')
+            p(class="indented")
+                input(type='text', name='charClassArtThree')
+            p 
+                | Master Arts: 
+            p(class="indented")
+                input(type='text', name='charMasterArtOne')
+            p(class="indented")
+                input(type='text', name='charMasterArtTwo')
+            p(class="indented")
+                input(type='text', name='charMasterArtThree')
+            p 
+                | Talent Art: 
+                input(type='text', name='charTalentArt')
+            p 
+                | Master Skills: 
+            p(class="indented")
+                input(type='text', name='charMasterSkillOne')
+            p(class="indented")
+                input(type='text', name='charMasterSkillTwo')
+            p(class="indented")
+                input(type='text', name='charMasterSkillThree')
+            p 
+                | Accessories: 
+            p(class="indented")
+                input(type='text', name='charAccessoryOne')
+            p(class="indented")
+                input(type='text', name='charAccessoryTwo')
+            p(class="indented")
+                input(type='text', name='charAccessoryThree')
+            p 
+                | Gems: 
+            p(class="indented")
+                input(type='text', name='charGemOne')
+            p(class="indented")
+                input(type='text', name='charGemTwo')
+            p(class="indented")
+                input(type='text', name='charGemThree')
+        
+        hr
+
+        div(class="heroForm")
+            p 
+                | Hero: 
+                select(name='heroName')
+                    each h in heroes
+                        option(value=h.name)=h.name 
+            p 
+                | Hero Arts: 
+            p(class="indented")
+                input(type='text', name='heroArtOne')
+            p(class="indented")
+                input(type='text', name='heroArtTwo')
+            p(class="indented")
+                input(type='text', name='heroArtThre')
+            p 
+                | Hero Accessories: 
+            p(class="indented")
+                input(type='text', name='heroAccessoryOne')
+            p(class="indented")
+                input(type='text', name='heroAccessoryTwo')
+            p(class="indented")
+                input(type='text', name='heroAccessoryThre')
+            
         input(value='Submit', type='Submit')
