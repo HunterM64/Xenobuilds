@@ -11,6 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var xc3Router = require('./routes/xc3');
 var searchRouter = require('./routes/search');
+var giveMeTheFileRouter = require('./routes/giveMeTheFile')
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/xc3', xc3Router);
 app.use('/search', searchRouter);
+app.use('/givemethefile', giveMeTheFileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
