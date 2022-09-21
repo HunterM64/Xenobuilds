@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 /* GET search using :id. */
 router.get('/:id', function(req, res, next) {
-    res.send(party_data[req.params.id]);
+    res.render('search', {title: party_data[req.params.id].party_name, data:party_data[req.params.id]});
 });
 
 module.exports = router;
