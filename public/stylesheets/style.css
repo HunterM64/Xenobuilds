@@ -49,6 +49,9 @@ a {
 
 div.gallery {
   border: 1px solid #ccc;
+  background-color: lightgrey;
+  border-radius: 30px;
+  margin-bottom: 5px;
 }
 
 div.gallery:hover {
@@ -58,6 +61,22 @@ div.gallery:hover {
 div.gallery img {
   width: 100%;
   height: auto;
+}
+
+div.gallery p {
+  text-align: center;
+}
+
+div.gallery ul {
+  list-style: none;
+}
+
+div.gallery li {
+  text-align: center;
+}
+
+div.gallery p.bold {
+  font-weight: bold;
 }
 
 div.desc {
@@ -92,4 +111,14 @@ div.desc {
   content: "";
   display: table;
   clear: both;
+}
+
+div.float-container {
+  padding: 5px;
+}
+
+div.float-child {
+  width: 50%;
+  float:left;
+  
 }

@@ -1,52 +1,48 @@
 extends layout
 
 block content
-    h1= 'Number ' + data.id + ': ' + data.name
+    h1(style="text-align:center")= 'Number ' + data.id + ': ' + data.name
     - var list = ["noah", "mio", "eunie", "taion", "lanz", "sena"]
     each name in list
         div(class="responsive")
-            div(class="gallery")
-                ul 
-                    li Class 
-                        ul 
-                            li= data[name].class
-                    li Class Arts 
-                        ol 
+            div(class="gallery") 
+                p(class="bold") Class 
+                        p= data[name].class
+                div(class="float-container")
+                    div(class="float-child")
+                        p(class="bold") Class Arts 
                             each art in data[name].classArts
-                                li= art
-                    li Master Arts 
-                        ol 
+                                p= art
+                    div(class="float-child")
+                        p(class="bold") Master Arts 
                             each art in data[name].masterArts
-                                li= art
-                    li Talent Art 
-                        ul
-                            li= data[name].talentArt
-                    li Master Skills 
-                        ol 
-                            each skill in data[name].masterSkills
-                                li= skill 
-                    li Accessories 
-                        ol
+                                p= art
+                p(class="bold") Talent Art 
+                    p= data[name].talentArt
+                p(class="bold") Master Skills  
+                    each skill in data[name].masterSkills
+                        p= skill 
+                div(class="float-container")
+                    div(class="float-child")
+                        p(class="bold") Accessories 
                             each acc in data[name].accessories
-                                li= acc
-                    li Gems 
-                        ol
+                                p= acc
+                    div(class="float-child")
+                        p(class="bold") Gems 
                             each gem in data[name].gems
-                                li= gem
+                                p= gem
                 div(class="desc")
+                    hr
                     p= name[0].toUpperCase() + name.substring(1)
     
     div(class="responsive")
         div(class="gallery")
-            // content here
-            ul
-                li Arts
-                    ol
-                        each art in data["hero"].arts
-                            li= art
-                li Accessories
-                    ol
-                        each acc in data["hero"].accessories
-                            li= acc
+            p(class="bold") Arts
+                each art in data["hero"].arts
+                    p= art
+            p(class="bold") Accessories
+                each acc in data["hero"].accessories
+                    p= acc
             div(class="desc")
+                hr
                 p= data["hero"].name
