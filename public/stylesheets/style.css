@@ -122,3 +122,7 @@ div.float-child {
   float:left;
   
 }
+
+hr {
+  clear:both;
+}
