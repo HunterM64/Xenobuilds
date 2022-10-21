@@ -2,6 +2,7 @@ extends layout
 
 block content
     h1 Xenoblade Chronicles 3 Party Builder
+    - var list = ["noah", "mio", "eunie", "taion", "lanz", "sena"]
 
 
     form(action='/xc3', method='POST')
@@ -18,293 +19,58 @@ block content
             button(class="tablinks" onclick="openTab(event, 'Sena')") Sena 
             button(class="tablinks" onclick="openTab(event, 'Hero')") Hero
 
-        div(id="Noah" class="tabcontent")
-            p 
-                | Class: 
-                input(type='text', name='noahClass')
-            p 
-                | Class Arts: 
-            p(class="indented")
-                input(type='text', name='noahClassArtOne')
-            p(class="indented") 
-                input(type='text', name='noahClassArtTwo')
-            p(class="indented")
-                input(type='text', name='noahClassArtThree')
-            p 
-                | Master Arts: 
-            p(class="indented")
-                input(type='text', name='noahMasterArtOne')
-            p(class="indented")
-                input(type='text', name='noahMasterArtTwo')
-            p(class="indented")
-                input(type='text', name='noahMasterArtThree')
-            p 
-                | Talent Art: 
-                input(type='text', name='noahTalentArt')
-            p 
-                | Master Skills: 
-            p(class="indented")
-                input(type='text', name='noahMasterSkillOne')
-            p(class="indented")
-                input(type='text', name='noahMasterSkillTwo')
-            p(class="indented")
-                input(type='text', name='noahMasterSkillThree')
-            p 
-                | Accessories: 
-            p(class="indented")
-                input(type='text', name='noahAccessoryOne')
-            p(class="indented")
-                input(type='text', name='noahAccessoryTwo')
-            p(class="indented")
-                input(type='text', name='noahAccessoryThree')
-            p 
-                | Gems: 
-            p(class="indented")
-                input(type='text', name='noahGemOne')
-            p(class="indented")
-                input(type='text', name='noahGemTwo')
-            p(class="indented")
-                input(type='text', name='noahGemThree')
+        each name in list
+            div(id=name[0].toUpperCase() + name.substring(1) class="tabcontent")
+                p 
+                    | Class: 
+                    select(name= name + 'Class')
+                        each c in classes
+                            option(value=c.name)=c.name 
+                p 
+                    | Class Arts: 
+                p(class="indented")
+                    
+                    input(type='text', name= name + 'ClassArtOne')
+                p(class="indented") 
+                    input(type='text', name= name + 'ClassArtTwo')
+                p(class="indented")
+                    input(type='text', name= name + 'ClassArtThree')
+                p 
+                    | Master Arts: 
+                p(class="indented")
+                    input(type='text', name= name + 'MasterArtOne')
+                p(class="indented")
+                    input(type='text', name= name + 'MasterArtTwo')
+                p(class="indented")
+                    input(type='text', name= name + 'MasterArtThree')
+                p 
+                    | Talent Art: 
+                    input(type='text', name= name + 'TalentArt')
+                p 
+                    | Master Skills: 
+                p(class="indented")
+                    input(type='text', name= name + 'MasterSkillOne')
+                p(class="indented")
+                    input(type='text', name= name + 'MasterSkillTwo')
+                p(class="indented")
+                    input(type='text', name= name + 'MasterSkillThree')
+                p 
+                    | Accessories: 
+                p(class="indented")
+                    input(type='text', name= name + 'AccessoryOne')
+                p(class="indented")
+                    input(type='text', name= name + 'AccessoryTwo')
+                p(class="indented")
+                    input(type='text', name= name + 'AccessoryThree')
+                p 
+                    | Gems: 
+                p(class="indented")
+                    input(type='text', name= name + 'GemOne')
+                p(class="indented")
+                    input(type='text', name= name + 'GemTwo')
+                p(class="indented")
+                    input(type='text', name= name + 'GemThree')
 
-        div(id="Mio" class="tabcontent")
-            p 
-                | Class: 
-                input(type='text', name='mioClass')
-            p 
-                | Class Arts: 
-            p(class="indented")
-                input(type='text', name='mioClassArtOne')
-            p(class="indented") 
-                input(type='text', name='mioClassArtTwo')
-            p(class="indented")
-                input(type='text', name='mioClassArtThree')
-            p 
-                | Master Arts: 
-            p(class="indented")
-                input(type='text', name='mioMasterArtOne')
-            p(class="indented")
-                input(type='text', name='mioMasterArtTwo')
-            p(class="indented")
-                input(type='text', name='mioMasterArtThree')
-            p 
-                | Talent Art: 
-                input(type='text', name='mioTalentArt')
-            p 
-                | Master Skills: 
-            p(class="indented")
-                input(type='text', name='mioMasterSkillOne')
-            p(class="indented")
-                input(type='text', name='mioMasterSkillTwo')
-            p(class="indented")
-                input(type='text', name='mioMasterSkillThree')
-            p 
-                | Accessories: 
-            p(class="indented")
-                input(type='text', name='mioAccessoryOne')
-            p(class="indented")
-                input(type='text', name='mioAccessoryTwo')
-            p(class="indented")
-                input(type='text', name='mioAccessoryThree')
-            p 
-                | Gems: 
-            p(class="indented")
-                input(type='text', name='mioGemOne')
-            p(class="indented")
-                input(type='text', name='mioGemTwo')
-            p(class="indented")
-                input(type='text', name='mioGemThree')
-
-        div(id="Eunie" class="tabcontent")
-            p 
-                | Class: 
-                input(type='text', name='eunieClass')
-            p 
-                | Class Arts: 
-            p(class="indented")
-                input(type='text', name='eunieClassArtOne')
-            p(class="indented") 
-                input(type='text', name='eunieClassArtTwo')
-            p(class="indented")
-                input(type='text', name='eunieClassArtThree')
-            p 
-                | Master Arts: 
-            p(class="indented")
-                input(type='text', name='eunieMasterArtOne')
-            p(class="indented")
-                input(type='text', name='eunieMasterArtTwo')
-            p(class="indented")
-                input(type='text', name='eunieMasterArtThree')
-            p 
-                | Talent Art: 
-                input(type='text', name='eunieTalentArt')
-            p 
-                | Master Skills: 
-            p(class="indented")
-                input(type='text', name='eunieMasterSkillOne')
-            p(class="indented")
-                input(type='text', name='eunieMasterSkillTwo')
-            p(class="indented")
-                input(type='text', name='eunieMasterSkillThree')
-            p 
-                | Accessories: 
-            p(class="indented")
-                input(type='text', name='eunieAccessoryOne')
-            p(class="indented")
-                input(type='text', name='eunieAccessoryTwo')
-            p(class="indented")
-                input(type='text', name='eunieAccessoryThree')
-            p 
-                | Gems: 
-            p(class="indented")
-                input(type='text', name='eunieGemOne')
-            p(class="indented")
-                input(type='text', name='eunieGemTwo')
-            p(class="indented")
-                input(type='text', name='eunieGemThree')
-
-        div(id="Taion" class="tabcontent")
-            p 
-                | Class: 
-                input(type='text', name='taionClass')
-            p 
-                | Class Arts: 
-            p(class="indented")
-                input(type='text', name='taionClassArtOne')
-            p(class="indented") 
-                input(type='text', name='taionClassArtTwo')
-            p(class="indented")
-                input(type='text', name='taionClassArtThree')
-            p 
-                | Master Arts: 
-            p(class="indented")
-                input(type='text', name='taionMasterArtOne')
-            p(class="indented")
-                input(type='text', name='taionMasterArtTwo')
-            p(class="indented")
-                input(type='text', name='taionMasterArtThree')
-            p 
-                | Talent Art: 
-                input(type='text', name='taionTalentArt')
-            p 
-                | Master Skills: 
-            p(class="indented")
-                input(type='text', name='taionMasterSkillOne')
-            p(class="indented")
-                input(type='text', name='taionMasterSkillTwo')
-            p(class="indented")
-                input(type='text', name='taionMasterSkillThree')
-            p 
-                | Accessories: 
-            p(class="indented")
-                input(type='text', name='taionAccessoryOne')
-            p(class="indented")
-                input(type='text', name='taionAccessoryTwo')
-            p(class="indented")
-                input(type='text', name='taionAccessoryThree')
-            p 
-                | Gems: 
-            p(class="indented")
-                input(type='text', name='taionGemOne')
-            p(class="indented")
-                input(type='text', name='taionGemTwo')
-            p(class="indented")
-                input(type='text', name='taionGemThree')
-
-        div(id="Lanz" class="tabcontent")
-            p 
-                | Class: 
-                input(type='text', name='lanzClass')
-            p 
-                | Class Arts: 
-            p(class="indented")
-                input(type='text', name='lanzClassArtOne')
-            p(class="indented") 
-                input(type='text', name='lanzClassArtTwo')
-            p(class="indented")
-                input(type='text', name='lanzClassArtThree')
-            p 
-                | Master Arts: 
-            p(class="indented")
-                input(type='text', name='lanzMasterArtOne')
-            p(class="indented")
-                input(type='text', name='lanzMasterArtTwo')
-            p(class="indented")
-                input(type='text', name='lanzMasterArtThree')
-            p 
-                | Talent Art: 
-                input(type='text', name='lanzTalentArt')
-            p 
-                | Master Skills: 
-            p(class="indented")
-                input(type='text', name='lanzMasterSkillOne')
-            p(class="indented")
-                input(type='text', name='lanzMasterSkillTwo')
-            p(class="indented")
-                input(type='text', name='lanzMasterSkillThree')
-            p 
-                | Accessories: 
-            p(class="indented")
-                input(type='text', name='lanzAccessoryOne')
-            p(class="indented")
-                input(type='text', name='lanzAccessoryTwo')
-            p(class="indented")
-                input(type='text', name='lanzAccessoryThree')
-            p 
-                | Gems: 
-            p(class="indented")
-                input(type='text', name='lanzGemOne')
-            p(class="indented")
-                input(type='text', name='lanzGemTwo')
-            p(class="indented")
-                input(type='text', name='lanzGemThree')
-
-        div(id="Sena" class="tabcontent")
-            p 
-                | Class: 
-                input(type='text', name='senaClass')
-            p 
-                | Class Arts: 
-            p(class="indented")
-                input(type='text', name='senaClassArtOne')
-            p(class="indented") 
-                input(type='text', name='senaClassArtTwo')
-            p(class="indented")
-                input(type='text', name='senaClassArtThree')
-            p 
-                | Master Arts: 
-            p(class="indented")
-                input(type='text', name='senaMasterArtOne')
-            p(class="indented")
-                input(type='text', name='senaMasterArtTwo')
-            p(class="indented")
-                input(type='text', name='senaMasterArtThree')
-            p 
-                | Talent Art: 
-                input(type='text', name='senaTalentArt')
-            p 
-                | Master Skills: 
-            p(class="indented")
-                input(type='text', name='senaMasterSkillOne')
-            p(class="indented")
-                input(type='text', name='senaMasterSkillTwo')
-            p(class="indented")
-                input(type='text', name='senaMasterSkillThree')
-            p 
-                | Accessories: 
-            p(class="indented")
-                input(type='text', name='senaAccessoryOne')
-            p(class="indented")
-                input(type='text', name='senaAccessoryTwo')
-            p(class="indented")
-                input(type='text', name='senaAccessoryThree')
-            p 
-                | Gems: 
-            p(class="indented")
-                input(type='text', name='senaGemOne')
-            p(class="indented")
-                input(type='text', name='senaGemTwo')
-            p(class="indented")
-                input(type='text', name='senaGemThree')
 
         div(id="Hero" class="tabcontent")
             p 

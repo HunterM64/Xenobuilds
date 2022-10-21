@@ -8,15 +8,17 @@ const party_data = require('../public/json/party_data.json');
 
 /* GET route */
 router.get('/', async function(req, res, next) {
-  let jsonBlocks;
+  let jsonBlocksH;
+  let jsonBlocksC
   try {
-    var response = await fetch('https://hunterm64.github.io/data/xc3HeroList.json')
-    jsonBlocks = await response.json();
-    console.log(jsonBlocks);
+    var response1 = await fetch('https://hunterm64.github.io/data/xc3HeroList.json')
+    jsonBlocksH = await response1.json();
+    var response2 = await fetch('https://hunterm64.github.io/data/xc3Class.json')
+    jsonBlocksC = await response2.json()
   } catch (e) {
     console.error(e)
   }
-  res.render('xc3', {title: 'XC3', heroes:jsonBlocks});
+  res.render('xc3', {title: 'XC3', heroes:jsonBlocksH, classes:jsonBlocksC});
 });
 
 router.post('/', function(req, res, next) {
