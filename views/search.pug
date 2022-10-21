@@ -3,9 +3,20 @@ extends layout
 block content
     h1(style="text-align:center")= 'Number ' + data.id + ': ' + data.name
     - var list = ["noah", "mio", "eunie", "taion", "lanz", "sena"]
+    - var plac = {"Attacker": "FF0000", "Healer":"00FF00", "Defender":"0000FF"}
     each name in list
+        
+        -
+            var classColor = "000000"
+            for(i = 0; i < classes.length; i++) {
+                if (data[name].class == classes[i].name) {
+                    classColor = plac[classes[i].role] 
+                }
+            }
         div(class="responsive")
-            div(class="gallery") 
+            div(class="gallery" 
+            onmouseover='this.style.border="1px solid #' + classColor + '"'
+            onmouseout='this.style.border="1px solid #ccc"') 
                 p(class="bold") Class 
                         p= data[name].class
                 div(class="float-container")
@@ -36,7 +47,9 @@ block content
                     p= name[0].toUpperCase() + name.substring(1)
     
     div(class="responsive")
-        div(class="gallery")
+        div(class="gallery"
+        onmouseover='this.style.border="1px solid ' + classColor + '"'
+        onmouseout='this.style.border="1px solid #ccc"')
             p(class="bold") Arts
                 each art in data["hero"].arts
                     p= art
