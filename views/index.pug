@@ -1,9 +1,10 @@
 extends layout
 
 block content
-  h1 Welcome to #{title}!
+  h1(class="p-3 text-center") Welcome to #{title}!
 
-  p Select the game you want to submit a build for:
-  
-  p(class="indented")
-    a(href='/xc3') Xenoblade Chronicles 3
+  div(class="mt-5 col d-flex justify-content-center")
+    div(class="card text-center" style="width: 25rem;")
+      div(class="card-header") Select the game you want to submit a build for: 
+      div(class="list-group")
+        a(class="list-group-item list-group-item-action" href='/xc3/') Xenoblade Chronicles 3

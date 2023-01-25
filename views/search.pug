@@ -1,61 +1,93 @@
 extends layout
 
 block content
-    h1(style="text-align:center")= 'Number ' + data.id + ': ' + data.name
+    if (data.name == "")
+        h1(class='p-3 text-center')= 'Team Number ' + data.id
+    else
+        h1(class='p-3 text-center')= 'Number ' + data.id + ': ' + data.name
+
     - var list = ["noah", "mio", "eunie", "taion", "lanz", "sena"]
     - var plac = {"Attacker": "FF0000", "Healer":"00FF00", "Defender":"0000FF"}
-    each name in list
+
+    div(class='container text-center')
+        div(class='row row-cols-1 row-cols-sm-1 row-cols-md-2')
+            
+            each name in list
+                
+                div(class='col my-2')
+                    div(class='card')
+                        div(class='card-header')= name[0].toUpperCase() + name.substring(1)
+                        ul(class='list-group list-group-flush')
+                            li(class='list-group-item')
+                                div(class='card')
+                                    div(class='card-header') Class
+                                    ul(class='list-group list-group-flush')
+                                        li(class='list-group-item')= data[name].class
+                            li(class='list-group-item')
+                                div(class='row row-cols-2')
+                                    div(class='col')
+                                        div(class='card')
+                                            div(class='card-header') Class Arts
+                                            ul(class='list-group list-group-flush')
+                                                each art in data[name].classArts
+                                                    li(class='list-group-item')= art
+                                    div(class='col')
+                                        div(class='card')
+                                            div(class='card-header') Master Arts
+                                            ul(class='list-group list-group-flush')
+                                                each art in data[name].masterArts
+                                                    li(class='list-group-item')= art
+                            li(class='list-group-item')
+                                div(class='card')
+                                    div(class='card-header') Talent Art
+                                    ul(class='list-group list-group-flush')
+                                        li(class='list-group-item')= data[name].talentArt
+                            li(class='list-group-item')
+                                div(class='card')
+                                    div(class='card-header') Master Skills
+                                    ul(class='list-group list-group-flush')
+                                        each skill in data[name].masterSkills
+                                            li(class='list-group-item')= skill
+                            li(class='list-group-item')
+                                div(class='row row-cols-2')
+                                    div(class='col')
+                                        div(class='card')
+                                            div(class='card-header') Accessories
+                                            ul(class='list-group list-group-flush')
+                                                each acc in data[name].accessories
+                                                    li(class='list-group-item')= acc
+                                    div(class='col')
+                                        div(class='card')
+                                            div(class='card-header') Gems
+                                            ul(class='list-group list-group-flush')
+                                                each gem in data[name].gems
+                                                    li(class='list-group-item')= gem
+
+    div(class='container text-center')
+        div(class='row row-cols-1')
+            div(class='col my-2')
+                div(class='card')
+                    div(class='card-header')= data["hero"].name
+                    ul(class='list-group list-group-flush')
+                        li(class='list-group-item')
+                            div(class='card')
+                                div(class='card-header') Arts
+                                ul(class='list-group list-group-flush')
+                                    each art in data["hero"].arts
+                                        li(class='list-group-item')= art
+                        li(class='list-group-item')
+                            div(class='card')
+                                div(class='card-header') Acessories
+                                ul(class='list-group list-group-flush')
+                                    each acc in data["hero"].accessories
+                                        li(class='list-group-item')= acc
+
+    //- each name in list
         
-        -
-            var classColor = "000000"
-            for(i = 0; i < classes.length; i++) {
-                if (data[name].class == classes[i].name) {
-                    classColor = plac[classes[i].role] 
-                }
-            }
-        div(class="responsive")
-            div(class="gallery" 
-            onmouseover='this.style.border="1px solid #' + classColor + '"'
-            onmouseout='this.style.border="1px solid #ccc"') 
-                p(class="bold") Class 
-                        p= data[name].class
-                div(class="float-container")
-                    div(class="float-child")
-                        p(class="bold") Class Arts 
-                            each art in data[name].classArts
-                                p= art
-                    div(class="float-child")
-                        p(class="bold") Master Arts 
-                            each art in data[name].masterArts
-                                p= art
-                p(class="bold") Talent Art 
-                    p= data[name].talentArt
-                p(class="bold") Master Skills  
-                    each skill in data[name].masterSkills
-                        p= skill 
-                div(class="float-container")
-                    div(class="float-child")
-                        p(class="bold") Accessories 
-                            each acc in data[name].accessories
-                                p= acc
-                    div(class="float-child")
-                        p(class="bold") Gems 
-                            each gem in data[name].gems
-                                p= gem
-                div(class="desc")
-                    hr
-                    p= name[0].toUpperCase() + name.substring(1)
-    
-    div(class="responsive")
-        div(class="gallery"
-        onmouseover='this.style.border="1px solid ' + classColor + '"'
-        onmouseout='this.style.border="1px solid #ccc"')
-            p(class="bold") Arts
-                each art in data["hero"].arts
-                    p= art
-            p(class="bold") Accessories
-                each acc in data["hero"].accessories
-                    p= acc
-            div(class="desc")
-                hr
-                p= data["hero"].name
+    //-     -
+    //-         var classColor = "000000"
+    //-         for(i = 0; i < classes.length; i++) {
+    //-             if (data[name].class == classes[i].name) {
+    //-                 classColor = plac[classes[i].role] 
+    //-             }
+    //-         }

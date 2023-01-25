@@ -1,123 +1,126 @@
 extends layout
 
 block content
-    h1 Xenoblade Chronicles 3 Party Builder
+    h1(class="p-3 text-center") Xenoblade Chronicles 3 Party Builder
     - var list = ["noah", "mio", "eunie", "taion", "lanz", "sena"]
 
+    div(class="mt-5 col d-flex justify-content-center")
+        form(action='/xc3', method='POST')
+            div(class="text-center mb-3")
+                input(type='text', class='form-control', name='partyName', placeholder="Enter party name...")
 
-    form(action='/xc3', method='POST')
-        p 
-            | Party Name: 
-            input(type='text', name='partyName', placeholder="Enter party name...")
+            //- if it ain't broke don't fix it
+            <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="noah-tab" data-bs-toggle="tab" data-bs-target="#noah" type="button" role="tab" aria-controls="noah" aria-selected="true">Noah</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="mio-tab" data-bs-toggle="tab" data-bs-target="#mio" type="button" role="tab" aria-controls="mio" aria-selected="false">Mio</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="eunie-tab" data-bs-toggle="tab" data-bs-target="#eunie" type="button" role="tab" aria-controls="eunie" aria-selected="false">Eunie</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="taion-tab" data-bs-toggle="tab" data-bs-target="#taion" type="button" role="tab" aria-controls="taion" aria-selected="false">Taion</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="lanz-tab" data-bs-toggle="tab" data-bs-target="#lanz" type="button" role="tab" aria-controls="lanz" aria-selected="false">Lanz</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sena-tab" data-bs-toggle="tab" data-bs-target="#sena" type="button" role="tab" aria-controls="sena" aria-selected="false">Sena</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="hero-tab" data-bs-toggle="tab" data-bs-target="#hero" type="button" role="tab" aria-controls="hero" aria-selected="false">Hero</button>
+                </li>
+            </ul>
 
-        div(class="tab")
-            button(class="tablinks" onclick="openTab(event, 'Noah')") Noah
-            button(class="tablinks" onclick="openTab(event, 'Mio')") Mio
-            button(class="tablinks" onclick="openTab(event, 'Eunie')") Eunie
-            button(class="tablinks" onclick="openTab(event, 'Taion')") Taion 
-            button(class="tablinks" onclick="openTab(event, 'Lanz')") Lanz
-            button(class="tablinks" onclick="openTab(event, 'Sena')") Sena 
-            button(class="tablinks" onclick="openTab(event, 'Hero')") Hero
+            div(class="tab-content" id="myTabContent")
 
-        each name in list
-            div(id=name[0].toUpperCase() + name.substring(1) class="tabcontent")
-                p 
-                    | Class: 
-                    select(name= name + 'Class')
-                        each c in classes
-                            option(value=c.name)=c.name 
-                p 
-                    | Class Arts: 
-                p(class="indented")
+                each name in list
+                    if(name === "noah")
+                        div(class='tab-pane fade show active' id=name role='tabpanel' aria-labelledby=name+'-tab')
+                            select(class="form-select my-3" name= name + 'Class')
+                                option(selected disabled) Choose Class
+                                each c in classes
+                                    option(value=c.name)=c.name
+                            div(class="mb-3")
+                                label(for="ClassArts" class="form-label") Class Arts:
+                                input(type='text', class='form-control mb-1', name= name + 'ClassArtOne', id='ClassArts')
+                                input(type='text', class='form-control mb-1', name= name + 'ClassArtTwo', id='ClassArts')
+                                input(type='text', class='form-control mb-1', name= name + 'ClassArtThree', id='ClassArts')
+                            div(class="mb-3")
+                                label(for="MasterArts", class="form-label") Master Arts:
+                                input(type='text', class='form-control mb-1' name= name + 'MasterArtOne', id='MasterArts')
+                                input(type='text', class='form-control mb-1' name= name + 'MasterArtTwo', id='MasterArts')
+                                input(type='text', class='form-control mb-1' name= name + 'MasterArtThree', id='MasterArts')
+                            div(class="mb-3")
+                                label(for="TalentArt", class="form-label") Talent Art:
+                                input(type='text', class='form-control mb-1', name= name + 'TalentArt', id='TalentArt')
+                            div(class="mb-3")
+                                label(for="MasterSkills", class="form-label") Master Skills:
+                                input(type='text', class='form-control mb-1' name= name + 'MasterSkillOne', id='MasterSkills')
+                                input(type='text', class='form-control mb-1' name= name + 'MasterSkillTwo', id='MasterSkills')
+                                input(type='text', class='form-control mb-1' name= name + 'MasterSkillThree', id='MasterSkills')
+                            div(class="mb-3")
+                                label(for="Accessories", class="form-label") Accessories:
+                                input(type='text', class='form-control mb-1' name= name + 'AccessoryOne', id='Accessories')
+                                input(type='text', class='form-control mb-1' name= name + 'AccessoryTwo', id='Accessories')
+                                input(type='text', class='form-control mb-1' name= name + 'AccessoryThree', id='Accessories')
+                            div(class="mb-3")
+                                label(for="Gems", class="form-label") Gems:
+                                input(type='text', class='form-control mb-1' name= name + 'GemOne', id='Gems')
+                                input(type='text', class='form-control mb-1' name= name + 'GemTwo', id='Gems')
+                                input(type='text', class='form-control mb-1' name= name + 'GemThree', id='Gems')
+                    else 
+                        div(class='tab-pane fade' id=name role='tabpanel' aria-labelledby=name+'-tab')
+                            select(class="form-select my-3" name= name + 'Class')
+                                option(selected disabled) Choose Class
+                                each c in classes
+                                    option(value=c.name)=c.name
+                            div(class="mb-3")
+                                label(for="ClassArts" class="form-label") Class Arts:
+                                input(type='text', class='form-control mb-1', name= name + 'ClassArtOne', id='ClassArts')
+                                input(type='text', class='form-control mb-1', name= name + 'ClassArtTwo', id='ClassArts')
+                                input(type='text', class='form-control mb-1', name= name + 'ClassArtThree', id='ClassArts')
+                            div(class="mb-3")
+                                label(for="MasterArts", class="form-label") Master Arts:
+                                input(type='text', class='form-control mb-1' name= name + 'MasterArtOne', id='MasterArts')
+                                input(type='text', class='form-control mb-1' name= name + 'MasterArtTwo', id='MasterArts')
+                                input(type='text', class='form-control mb-1' name= name + 'MasterArtThree', id='MasterArts')
+                            div(class="mb-3")
+                                label(for="TalentArt", class="form-label") Talent Art:
+                                input(type='text', class='form-control mb-1', name= name + 'TalentArt', id='TalentArt')
+                            div(class="mb-3")
+                                label(for="MasterSkills", class="form-label") Master Skills:
+                                input(type='text', class='form-control mb-1' name= name + 'MasterSkillOne', id='MasterSkills')
+                                input(type='text', class='form-control mb-1' name= name + 'MasterSkillTwo', id='MasterSkills')
+                                input(type='text', class='form-control mb-1' name= name + 'MasterSkillThree', id='MasterSkills')
+                            div(class="mb-3")
+                                label(for="Accessories", class="form-label") Accessories:
+                                input(type='text', class='form-control mb-1' name= name + 'AccessoryOne', id='Accessories')
+                                input(type='text', class='form-control mb-1' name= name + 'AccessoryTwo', id='Accessories')
+                                input(type='text', class='form-control mb-1' name= name + 'AccessoryThree', id='Accessories')
+                            div(class="mb-3")
+                                label(for="Gems", class="form-label") Gems:
+                                input(type='text', class='form-control mb-1' name= name + 'GemOne', id='Gems')
+                                input(type='text', class='form-control mb-1' name= name + 'GemTwo', id='Gems')
+                                input(type='text', class='form-control mb-1' name= name + 'GemThree', id='Gems')
                     
-                    input(type='text', name= name + 'ClassArtOne')
-                p(class="indented") 
-                    input(type='text', name= name + 'ClassArtTwo')
-                p(class="indented")
-                    input(type='text', name= name + 'ClassArtThree')
-                p 
-                    | Master Arts: 
-                p(class="indented")
-                    input(type='text', name= name + 'MasterArtOne')
-                p(class="indented")
-                    input(type='text', name= name + 'MasterArtTwo')
-                p(class="indented")
-                    input(type='text', name= name + 'MasterArtThree')
-                p 
-                    | Talent Art: 
-                    input(type='text', name= name + 'TalentArt')
-                p 
-                    | Master Skills: 
-                p(class="indented")
-                    input(type='text', name= name + 'MasterSkillOne')
-                p(class="indented")
-                    input(type='text', name= name + 'MasterSkillTwo')
-                p(class="indented")
-                    input(type='text', name= name + 'MasterSkillThree')
-                p 
-                    | Accessories: 
-                p(class="indented")
-                    input(type='text', name= name + 'AccessoryOne')
-                p(class="indented")
-                    input(type='text', name= name + 'AccessoryTwo')
-                p(class="indented")
-                    input(type='text', name= name + 'AccessoryThree')
-                p 
-                    | Gems: 
-                p(class="indented")
-                    input(type='text', name= name + 'GemOne')
-                p(class="indented")
-                    input(type='text', name= name + 'GemTwo')
-                p(class="indented")
-                    input(type='text', name= name + 'GemThree')
-
-
-        div(id="Hero" class="tabcontent")
-            p 
-                | Hero: 
-                select(name='heroName')
-                    each h in heroes
-                        option(value=h.name)=h.name 
-            p 
-                | Hero Arts: 
-            p(class="indented")
-                input(type='text', name='heroArtOne')
-            p(class="indented")
-                input(type='text', name='heroArtTwo')
-            p(class="indented")
-                input(type='text', name='heroArtThree')
-            p 
-                | Hero Accessories: 
-            p(class="indented")
-                input(type='text', name='heroAccessoryOne')
-            p(class="indented")
-                input(type='text', name='heroAccessoryTwo')
-            p(class="indented")
-                input(type='text', name='heroAccessoryThree')
-            
-        input(value='Submit', type='Submit')
+                div(class="tab-pane fade" id="hero" role="tabpanel" aria-labelledby="hero-tab")
+                    select(class="form-select my-3" name='heroName')
+                        option(selected disabled) Choose Hero
+                        each h in heroes
+                            option(value=h.name)=h.name 
+                    div(class="mb-3")
+                        label(for="HeroArts", class="form-label") Hero Arts:
+                        input(type='text', class='form-control mb-1', name='heroArtOne', id='HeroArts')
+                        input(type='text', class='form-control mb-1', name='heroArtTwo', id='HeroArts')
+                        input(type='text', class='form-control mb-1', name='heroArtThree', id='HeroArts')
+                    div(class="mb-3")
+                        label(for="HeroArts", class="form-label") Hero Accessories:
+                        input(type='text', class='form-control mb-1', name='heroAccessoryOne', id='HeroArts')
+                        input(type='text', class='form-control mb-1', name='heroAccessoryTwo', id='HeroArts')
+                        input(type='text', class='form-control mb-1', name='heroAccessoryThree', id='HeroArts')
     
-    script.
-        function openTab (evt, cityName) {
-            
-            evt.preventDefault();
-
-            // Declare all variables
-            var i, tabcontent, tablinks;
-
-            // Get all elements with class="tabcontent" and hide them
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Get all elements with class="tablinks" and remove the class "active"
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // Show the current tab, and add an "active" class to the button that opened the tab
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
+            div(class="text-center mt-2")
+                input(class="btn btn-light" value='Submit', type='Submit')
