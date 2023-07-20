@@ -4,7 +4,7 @@ block content
     if (data.name == "")
         h1(class='p-3 text-center')= 'Team Number ' + data.id
     else
-        h1(class='p-3 text-center')= 'Number ' + data.id + ': ' + data.name
+        h1(class='p-3 text-center')= data.name
 
     - var list = ["noah", "mio", "eunie", "taion", "lanz", "sena"]
     - var plac = {"Attacker": "FF0000", "Healer":"00FF00", "Defender":"0000FF"}

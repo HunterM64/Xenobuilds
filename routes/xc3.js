@@ -98,7 +98,7 @@ router.post('/', function(req, res, next) {
     }
   })
 
-  res.redirect('/search/' + party_id.toString())
+  res.redirect('/search/xc3/' + party_id.toString())
 });
 
 module.exports = router;

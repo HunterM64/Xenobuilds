@@ -6,11 +6,12 @@ const party_data = require('../public/json/party_data.json')
 
 /* GET search */
 router.get('/', function(req, res, next) {
-    res.send('try adding a /:id next time')
+
+    res.render('search_index', { title: 'Xenobuilds'});
 });
 
 /* GET search using :id. */
-router.get('/:id', async function(req, res, next) {
+router.get('/xc3/:id', async function(req, res, next) {
     if(!party_data[req.params.id]) {
         res.send("Party not found")
     }
@@ -21,7 +22,20 @@ router.get('/:id', async function(req, res, next) {
     } catch(e) {
         console.log(e);
     }
-    res.render('search', {title: req.params.id, data:party_data[req.params.id], classes:jsonBlocksC});
+    res.render('xc3_build', {title: req.params.id, data:party_data[req.params.id], classes:jsonBlocksC});
+});
+
+router.get('/xc3', function(req, res, next) {
+    
+    // Get every team id from JSON file
+    var idList = [];
+    for (var i = 1; i < party_data.length; i++) {
+        idList.push(party_data[i].id);
+    }
+    console.log("idList:");
+    console.log(idList);
+
+    res.render('search_results', { title: 'Xenobuilds', data:idList});
 });
 
 module.exports = router;

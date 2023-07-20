@@ -13,11 +13,13 @@ var xc3Router = require('./routes/xc3');
 var searchRouter = require('./routes/search');
 var giveMeTheFileRouter = require('./routes/giveMeTheFile');
 var apiRouter = require('./routes/api');
+var aboutRouter = require('./routes/about');
+var buildRouter = require('./routes/build');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/api')]);
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
@@ -32,7 +34,9 @@ app.use('/users', usersRouter);
 app.use('/xc3', xc3Router);
 app.use('/search', searchRouter);
 app.use('/givemethefile', giveMeTheFileRouter);
-app.use('/api', apiRouter)
+app.use('/api', apiRouter);
+app.use('/about', aboutRouter);
+app.use('/build', buildRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

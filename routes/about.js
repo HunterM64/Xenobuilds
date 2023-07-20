@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('new_index', { title: 'Xenobuilds' });
+  res.render('about', { title: 'Xenobuilds' });
 });
 
 module.exports = router;
