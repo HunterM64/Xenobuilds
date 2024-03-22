@@ -21,6 +21,7 @@ router.get('/', async function(req, res, next) {
   res.render('xc3', {title: 'XC3', heroes:jsonBlocksH, classes:jsonBlocksC});
 });
 
+/* POST route */
 router.post('/', function(req, res, next) {
   var party_id = party_data[party_data.length-1].id + 1
 

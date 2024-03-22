@@ -1,0 +1,66 @@
+[
+    {
+        "name":"Longsword",
+        "type":"melee",
+        "arts":[
+            {
+                "name":"Rising Blade",
+                "type":"melee"
+            },
+            {
+                "name":"Defensive Stance",
+                "type":"aura"
+            },
+            {
+                "name":"Tornado Blade",
+                "type":"melee"
+            },
+            {
+                "name":"Magnum Edge",
+                "type":"debuff"
+            },
+            {
+                "name":"Offensive Stance",
+                "type":"aura"
+            },
+            {
+                "name":"Burning Slash",
+                "type":"debuff"
+            },
+            {
+                "name":"Incendiary Edge",
+                "type":"melee"
+            },
+            {
+                "name":"Samurai Soul",
+                "type":"aura"
+            },
+            {
+                "name":"Ultraslash",
+                "type":"melee"
+            },
+            {
+                "name":"True Stream Edge",
+                "type":"melee"
+            },
+            {
+                "name":"Blossom Dance",
+                "type":"melee"
+            }
+        ]
+    },
+    {
+        "name":"Placeholder",
+        "type":"melee",
+        "arts":[
+            {
+                "name":"Placeholder art 1",
+                "type":"melee"
+            },
+            {
+                "name":"Placeholder art 2",
+                "type":"debuff"
+            }
+        ]
+    }
+]

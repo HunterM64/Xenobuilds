@@ -15,6 +15,7 @@ var giveMeTheFileRouter = require('./routes/giveMeTheFile');
 var apiRouter = require('./routes/api');
 var aboutRouter = require('./routes/about');
 var buildRouter = require('./routes/build');
+var xcxRouter = require('./routes/xcx');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/givemethefile', giveMeTheFileRouter);
 app.use('/api', apiRouter);
 app.use('/about', aboutRouter);
 app.use('/build', buildRouter);
+app.use('/xcx', xcxRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,30 @@
+[
+    {
+        "name":"Drifter",
+        "skillSlots":5
+    },
+    {
+        "name":"Duelist",
+        "skillSlots":3
+    },
+    {
+        "name":"Bastion Warrior",
+        "skillSlots":4
+    },
+    {
+        "name":"Full Metal Jaguar",
+        "skillSlots":4
+    },
+    {
+        "name":"Astral Crusader",
+        "skillSlots":4
+    },
+    {
+        "name":"Mastermind",
+        "skillSlots":4
+    },
+    {
+        "name":"Galactic Knight",
+        "skillSlots":4
+    }
+]
