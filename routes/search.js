@@ -30,7 +30,11 @@ router.get('/xc3', function(req, res, next) {
     // Get every team id from JSON file
     var idList = [];
     for (var i = 1; i < party_data.length; i++) {
-        idList.push(party_data[i].id);
+        var obj = {
+                "id":party_data[i].id,
+                "name":party_data[i].name
+        }
+        idList.push(obj);
     }
     console.log("idList:");
     console.log(idList);

@@ -3,6 +3,13 @@ extends layout
 block content 
     h1 Under Construction!
     p Here's everything I found:
-    each id in data
+    each entry in data
         div
-            a(href="xc3/" + id)= id 
+            -
+                var subtitle = ""
+                if(entry.name === "") {
+                    subtitle = entry.id
+                } else {
+                    subtitle = entry.id + ' - ' + entry.name
+                }
+            a(href="xc3/" + entry.id)= subtitle
