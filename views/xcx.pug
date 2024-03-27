@@ -5,16 +5,16 @@ block content
     
     select(name="meleeWeapon" id="meleeWeapon" onchange="myFunction(this)")
         option(selected hidden disabled) select weapon
-        option(value="longsword") Longsword 
-        option(value="placeholder") Placeholder
+        option Longsword 
+        option Placeholder
     
-    select(name="changeme" id="changeme")
+    select(name="changeme" id="changeme")  
     
     script.
         function myFunction(object) {
             var value = object.value
             console.log(value)
-            if (value === "longsword") {
+            if (value === "Longsword") {
                 var data = ['lsart1', 'lsart2']
             } else {
                 var data = ['part1', 'part2']
